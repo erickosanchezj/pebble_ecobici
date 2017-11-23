@@ -23,7 +23,7 @@ var windTitulo = new UI.Text({
     text: ''
 });
 
-//navigator.geolocation.getCurrentPosition( function(pos) {
+//navigator.geolocation.getCurrentPosition(function(pos) {
 //  var Longitud = pos.coords.longitude;
 //  var Latitud = pos.coords.latitude;
 //});
@@ -42,10 +42,9 @@ function getStations(idx) {
 
             var bicisDisponibles = (data[idx].bikes);
             var nombreEstacion = (data[idx].name);
-            nombreEstacion = nombreEstacion.substr(0);
+            //nombreEstacion = nombreEstacion.substr(0);
             var tiempoRefresco = (data[idx].timestamp);
             var aparcamientoLibre = (data[idx].free);
-            //var numeroEstacion = (data[idx].number);
             var bicisLat = (data[idx].lat);
             var bicisLon = (data[idx].lng);
 
@@ -68,7 +67,7 @@ function getStations(idx) {
             //main.body(aparcamientoLibre + " lugares libres\n" + bicisDisponibles + " bicis disponibles\n" + "Hora: " + horaHoras + "" + horaMinseg);
         },
         function(err) {
-            console.log("AJAX Error: " + err); //It is strongly recommend to pass a second parameter in case there is an error
+            console.log("AJAX Error: " + err);
             main.body("Error obteniendo datos.");
         }
     );
@@ -79,17 +78,14 @@ getStations(422);
 
 wind.on('click', 'up', function(e) {
     vibrar.vibrate('short'); getStations(411);
-    //array works with ID number
     //var items = Array(411); var random = items[Math.floor(Math.random()*items.length)]; getStations(random);
 });
 
 wind.on('click', 'select', function(e) {
-    //array works with ID number
     vibrar.vibrate('short'); getStations(422);
 });
 
 wind.on('click', 'down', function(e) {
-    //array works with ID number
     vibrar.vibrate('short'); getStations(421);
     //var items = Array(422); var random = items[Math.floor(Math.random()*items.length)]; getStations(random);
 });
